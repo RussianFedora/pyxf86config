@@ -38,7 +38,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %preun
 if [ -d %{_libdir}/python%{pyver}/site-packages/xf86config.pyc ] ; then
-  rm -f {_libdir}/python%{pyver}/site-packages/xf86config.pyc
+  rm -f %{_libdir}/python%{pyver}/site-packages/xf86config.pyc
 fi
 
 %files
@@ -48,7 +48,7 @@ fi
 %{_libdir}/python?.?/site-packages/xf86config.py
 
 %changelog
-* Tue Mar 29 2005 Warren Togami <wtogami@redhat.com> - 0.3.19-3
+* Tue Mar 29 2005 Warren Togami <wtogami@redhat.com> - 0.3.19-4
 - #138263 broken preun #142419 auto pyver
 
 * Mon Nov  8 2004 Jeremy Katz <katzj@redhat.com> - 0.3.19-2
