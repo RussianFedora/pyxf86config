@@ -1,14 +1,16 @@
+%define pyver %(python -c 'import sys ; print sys.version[:3]')
+
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.19
-Release: 2
+Release: 3
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-root
 Requires: glib2
-Requires: python-abi = %(%{__python} -c "import sys; print sys.version[:3]")
+Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
 BuildRequires: XFree86-devel
 BuildRequires: python2
@@ -24,7 +26,7 @@ It is used to read and write X server configuration files.
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-%configure --x-libraries=/usr/X11R6/%{_lib} --with-python-version=2.4
+%configure --x-libraries=/usr/X11R6/%{_lib} --with-python-version=%{pyver}
 make
 
 %install
@@ -35,8 +37,8 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %preun
-if [ -d %{_libdir}/python2.2/site-packages/xf86config.pyc ] ; then
-  rm -f {_libdir}/python2.2/site-packages/xf86config.pyc
+if [ -d %{_libdir}/python%{pyver}/site-packages/xf86config.pyc ] ; then
+  rm -f {_libdir}/python%{pyver}/site-packages/xf86config.pyc
 fi
 
 %files
@@ -46,6 +48,9 @@ fi
 %{_libdir}/python?.?/site-packages/xf86config.py
 
 %changelog
+* Tue Mar 29 2005 Warren Togami <wtogami@redhat.com> - 0.3.19-3
+- #138263 broken preun #142419 auto pyver
+
 * Mon Nov  8 2004 Jeremy Katz <katzj@redhat.com> - 0.3.19-2
 - rebuild for python 2.4
 - make the python requires be on the python-abi
