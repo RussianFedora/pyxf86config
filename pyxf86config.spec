@@ -1,7 +1,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.15
-Release: 1.1
+Version: 0.3.18
+Release: 2
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -16,8 +16,8 @@ BuildRequires: python-devel
 ExcludeArch: s390 s390x ppc64
 
 %description
-Python wrappers for the XFree86 library libxf86config.
-It is used to read and write XFree86 configuration files.
+Python wrappers for the X server config file library libxf86config.
+It is used to read and write X server configuration files.
 
 %prep
 %setup -q
@@ -46,8 +46,21 @@ fi
 %{_libdir}/python?.?/site-packages/xf86config.py
 
 %changelog
-* Tue Mar 02 2004 Elliot Lee <sopwith@redhat.com>
-- rebuilt
+* Fri May  7 2004 Mike A. Harris <mharris@redhat.com> - 0.3.18-2
+- Bumped release number and rebuilt unmodified in dist-fc2 to relink to new
+  static libxf86config.a to pick up fix for (FC2BLOCKER #120950)
+
+* Thu Apr 15 2004 Mike A. Harris <mharris@redhat.com> - 0.3.18-1
+- Do not write out XkbRules line to config file, as it is unnecessary hard
+  coding the rules file, which has a built in default which should always
+  work. (#120858)
+
+* Thu Apr 15 2004 Jeremy Katz <katzj@redhat.com> - 0.3.17-1
+- xorg for XkbRules
+
+* Wed Apr 14 2004 Alex Larsson <alexl@redhat.com> 0.3.16
+- Rebuild for the new libxf86config
+- remove references to XFree86
 
 * Thu Feb 19 2004 Brent Fox <bfox@redhat.com> 0.3.15-1
 - remove the setupMice() function createTemplate() 
