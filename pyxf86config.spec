@@ -1,14 +1,14 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.19
-Release: 1
+Release: 2
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-root
 Requires: glib2
-Requires: python2
+Requires: python-abi = %(%{__python} -c "import sys; print sys.version[:3]")
 BuildRequires: glib2-devel
 BuildRequires: XFree86-devel
 BuildRequires: python2
@@ -46,6 +46,10 @@ fi
 %{_libdir}/python?.?/site-packages/xf86config.py
 
 %changelog
+* Mon Nov  8 2004 Jeremy Katz <katzj@redhat.com> - 0.3.19-2
+- rebuild for python 2.4
+- make the python requires be on the python-abi
+
 * Wed Aug 11 2004 Jeremy Katz <katzj@redhat.com> - 0.3.19-1
 - Change keyboard driver to kbd
 
