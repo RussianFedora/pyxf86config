@@ -1,7 +1,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.18
-Release: 3
+Version: 0.3.19
+Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -46,12 +46,8 @@ fi
 %{_libdir}/python?.?/site-packages/xf86config.py
 
 %changelog
-* Tue Jun 15 2004 Elliot Lee <sopwith@redhat.com>
-- rebuilt
-
-* Fri May  7 2004 Mike A. Harris <mharris@redhat.com> - 0.3.18-2
-- Bumped release number and rebuilt unmodified in dist-fc2 to relink to new
-  static libxf86config.a to pick up fix for (FC2BLOCKER #120950)
+* Wed Aug 11 2004 Jeremy Katz <katzj@redhat.com> - 0.3.19-1
+- Change keyboard driver to kbd
 
 * Thu Apr 15 2004 Mike A. Harris <mharris@redhat.com> - 0.3.18-1
 - Do not write out XkbRules line to config file, as it is unnecessary hard
