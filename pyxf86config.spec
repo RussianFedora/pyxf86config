@@ -1,7 +1,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.13
-Release: 2
+Version: 0.3.15
+Release: 1.1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -9,7 +9,7 @@ Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-root
 Requires: glib2
 Requires: python2
-BuildRequires: glib2
+BuildRequires: glib2-devel
 BuildRequires: XFree86-devel
 BuildRequires: python2
 BuildRequires: python-devel
@@ -46,6 +46,16 @@ fi
 %{_libdir}/python?.?/site-packages/xf86config.py
 
 %changelog
+* Tue Mar 02 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Thu Feb 19 2004 Brent Fox <bfox@redhat.com> 0.3.15-1
+- remove the setupMice() function createTemplate() 
+- because the 2.6 kernel puts both PS/2 and USB mice on the same device
+
+* Mon Feb  9 2004 Alexander Larsson <alexl@redhat.com> 0.3.14-1
+- fix range array bug
+
 * Thu Nov  6 2003 Jeremy Katz <katzj@redhat.com> 0.3.13-2
 - rebuild for python 2.3
 - don't build on ppc64 either since X is missing bits there as well
