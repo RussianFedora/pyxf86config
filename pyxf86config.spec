@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.19
-Release: 3
+Release: 4
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
