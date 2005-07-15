@@ -46,10 +46,14 @@ fi
 %doc README NEWS AUTHORS COPYING ChangeLog
 %{_libdir}/python?.?/site-packages/ixf86configmodule.so
 %{_libdir}/python?.?/site-packages/xf86config.py
+%{_libdir}/python?.?/site-packages/xf86config.pyc
+%{_libdir}/python?.?/site-packages/xf86config.pyo
+
 
 %changelog
 * Fri Jul 15 2005 Paul Nasrat <pnasrat@redhat.com> - 0.3.19-5
 - Drop ppc64 exclude
+- pyc and pyo includes
 
 * Tue Mar 29 2005 Warren Togami <wtogami@redhat.com> - 0.3.19-4
 - #138263 broken preun #142419 auto pyver
