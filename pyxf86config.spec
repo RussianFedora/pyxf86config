@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.19
-Release: 5
+Release: 6
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -15,7 +15,7 @@ BuildRequires: glib2-devel
 BuildRequires: XFree86-devel
 BuildRequires: python2
 BuildRequires: python-devel
-ExcludeArch: s390 s390x
+ExcludeArch: s390 s390x ppc64
 
 %description
 Python wrappers for the X server config file library libxf86config.
@@ -51,8 +51,11 @@ fi
 
 
 %changelog
+* Fri Jul 15 2005 Paul Nasrat <pnasrat@redhat.com> - 0.3.19-6
+- ExcludeArch ppc64 again
+
 * Fri Jul 15 2005 Paul Nasrat <pnasrat@redhat.com> - 0.3.19-5
-- Drop ppc64 exclude
+- Drop ppc64 ExcludeArch
 - pyc and pyo includes
 
 * Tue Mar 29 2005 Warren Togami <wtogami@redhat.com> - 0.3.19-4
