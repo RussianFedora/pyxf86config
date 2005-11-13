@@ -2,8 +2,8 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.19
-Release: 6
+Version: 0.3.20
+Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -12,8 +12,7 @@ BuildRoot: %{_tmppath}/%{name}-root
 Requires: glib2
 Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
-BuildRequires: XFree86-devel
-BuildRequires: python2
+BuildRequires: libX11-devel
 BuildRequires: python-devel
 ExcludeArch: s390 s390x ppc64
 
@@ -36,21 +35,20 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%preun
-if [ -d %{_libdir}/python%{pyver}/site-packages/xf86config.pyc ] ; then
-  rm -f %{_libdir}/python%{pyver}/site-packages/xf86config.pyc
-fi
-
 %files
 %defattr(-,root,root)
 %doc README NEWS AUTHORS COPYING ChangeLog
 %{_libdir}/python?.?/site-packages/ixf86configmodule.so
-%{_libdir}/python?.?/site-packages/xf86config.py
-%{_libdir}/python?.?/site-packages/xf86config.pyc
-%{_libdir}/python?.?/site-packages/xf86config.pyo
+%{_libdir}/python?.?/site-packages/xf86config.py*
 
 
 %changelog
+* Sun Nov 13 2005 Jeremy Katz <katzj@redhat.com> - 0.3.20-1
+- the X server compiles in the path for rgb.txt, so don't explicitly list 
+  (fixes for the path move with modular X)
+- get rid of no longer needed %%preun
+- modular X buildrequires changes
+
 * Fri Jul 15 2005 Paul Nasrat <pnasrat@redhat.com> - 0.3.19-6
 - ExcludeArch ppc64 again
 
