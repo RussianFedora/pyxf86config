@@ -2,7 +2,7 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.20
+Version: 0.3.21
 Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
@@ -25,7 +25,7 @@ It is used to read and write X server configuration files.
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-%configure --x-libraries=/usr/X11R6/%{_lib} --with-python-version=%{pyver}
+%configure --x-libraries=/usr/%{_lib} --with-python-version=%{pyver}
 make
 
 %install
