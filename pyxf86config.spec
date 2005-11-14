@@ -25,7 +25,7 @@ It is used to read and write X server configuration files.
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-%configure --x-libraries=/usr/%{_lib} --with-python-version=%{pyver}
+%configure --x-libraries=/usr/X11R6/%{_lib} --with-python-version=%{pyver}
 make
 
 %install
