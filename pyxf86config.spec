@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.22
-Release: 1
+Release: 1.1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
+- rebuilt
+
 * Sun Nov 13 2005 Jeremy Katz <katzj@redhat.com> - 0.3.20-1
 - the X server compiles in the path for rgb.txt, so don't explicitly list 
   (fixes for the path move with modular X)
