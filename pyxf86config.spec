@@ -12,7 +12,7 @@ BuildRoot: %{_tmppath}/%{name}-root
 Requires: glib2
 Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
-BuildRequires: libX11-devel
+BuildRequires: libxf86config-devel >= 1.0.0-2
 BuildRequires: python-devel
 ExcludeArch: s390 s390x ppc64
 
@@ -25,7 +25,7 @@ It is used to read and write X server configuration files.
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-%configure --x-libraries=/usr/X11R6/%{_lib} --with-python-version=%{pyver}
+%configure --x-libraries=%{_libdir} --with-python-version=%{pyver}
 make
 
 %install
@@ -43,6 +43,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 21 2005 Jesse Keating <jkeating@redhat.com>
+- changed BuildReq to new modular devel package
+- Changed search path for X libraries
+
 * Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
 - rebuilt
 
