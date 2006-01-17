@@ -2,8 +2,8 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.22
-Release: 1.1
+Version: 0.3.23
+Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan 17 2006 Christopher Aillon <caillon@redhat.com> 0.3.23-1
+- Use the standard X headers instead of keeping a copy in-tree
+
 * Wed Dec 21 2005 Jesse Keating <jkeating@redhat.com>
 - changed BuildReq to new modular devel package
 - Changed search path for X libraries
