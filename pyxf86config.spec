@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.23
-Release: 1
+Release: 1.1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 0.3.23-1.1
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
 * Tue Jan 17 2006 Christopher Aillon <caillon@redhat.com> 0.3.23-1
 - Use the standard X headers instead of keeping a copy in-tree
 
