@@ -2,8 +2,8 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.23
-Release: 1.2
+Version: 0.3.24
+Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -12,7 +12,7 @@ BuildRoot: %{_tmppath}/%{name}-root
 Requires: glib2
 Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
-BuildRequires: libxf86config-devel >= 1.0.0-2
+BuildRequires: libX11-devel
 BuildRequires: python-devel
 ExcludeArch: s390 s390x ppc64
 
@@ -43,11 +43,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 0.3.23-1.2
-- bump again for double-long bug on ppc(64)
-
-* Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 0.3.23-1.1
-- rebuilt for new gcc4.1 snapshot and glibc changes
+* Wed Feb 22 2006 Chris Lumens <clumens@redhat.com> 0.3.24-1
+- Add 1600x1024 and 800x512 to the list of supported resolutions (#115679)
 
 * Tue Jan 17 2006 Christopher Aillon <caillon@redhat.com> 0.3.23-1
 - Use the standard X headers instead of keeping a copy in-tree
