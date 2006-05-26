@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.24
-Release: 1
+Release: 2
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -14,6 +14,7 @@ Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
+BuildRequires: xorg-x11-server-sdk
 ExcludeArch: s390 s390x ppc64
 
 %description
@@ -43,6 +44,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri May 26 2006 Adam Jackson <ajackson@redhat.com> 0.3.24-2
+- BuildRequires: xorg-x11-server-sdk (#191894)
+
 * Wed Feb 22 2006 Chris Lumens <clumens@redhat.com> 0.3.24-1
 - Add 1600x1024 and 800x512 to the list of supported resolutions (#115679)
 
