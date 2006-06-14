@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.24
-Release: 2
+Release: 3
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -15,7 +15,7 @@ BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
 BuildRequires: xorg-x11-server-sdk
-ExcludeArch: s390 s390x ppc64
+ExcludeArch: s390 s390x
 
 %description
 Python wrappers for the X server config file library libxf86config.
@@ -44,6 +44,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jun 13 2006 Jeremy Katz <katzj@redhat.com> - 0.3.24-3
+- ppc64 X lives
+
 * Fri May 26 2006 Adam Jackson <ajackson@redhat.com> 0.3.24-2
 - BuildRequires: xorg-x11-server-sdk (#191894)
 
