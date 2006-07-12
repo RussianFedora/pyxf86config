@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.24
-Release: 3
+Release: 3.1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -44,6 +44,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - 0.3.24-3.1
+- rebuild
+
 * Tue Jun 13 2006 Jeremy Katz <katzj@redhat.com> - 0.3.24-3
 - ppc64 X lives
 
