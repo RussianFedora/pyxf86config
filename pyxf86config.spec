@@ -2,7 +2,7 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.25
+Version: 0.3.26
 Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
@@ -44,6 +44,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 19 2006 Chris Lumens <clumens@redhat.com> 0.3.26-1
+- Don't traceback when given empty section identifiers.
+
 * Tue Jul 18 2006 Chris Lumens <clumens@redhat.com> 0.3.25-1
 - Remove unneeded X config sections from template generation.
 
