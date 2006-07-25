@@ -2,7 +2,7 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.26
+Version: 0.3.27
 Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
@@ -44,6 +44,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jul 25 2006 Chris Lumens <clumens@redhat.com> 0.3.27-1
+- Remove gigantic keyboard comment.
+- Don't write out an empty modules section.
+
 * Wed Jul 19 2006 Chris Lumens <clumens@redhat.com> 0.3.26-1
 - Don't traceback when given empty section identifiers.
 
