@@ -3,18 +3,19 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.27
-Release: 1
+Release: 2%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: System Environment/Libraries
-BuildRoot: %{_tmppath}/%{name}-root
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: glib2
 Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
-BuildRequires: xorg-x11-server-sdk
+BuildRequires: libxf86config-devel >= 1.1.1-7
+
 ExcludeArch: s390 s390x
 
 %description
@@ -44,6 +45,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jul 26 2006 Mike A. Harris <mharris@redhat.com> 0.3.27-2.fc6
+- Remove dependency on xorg-x11-server-sdk, and replace it with correct dep
+  on "libxf86config-devel >= 1.1.1-7", and rebuild in order to pick up
+  necessary fixes in the static library.
+- Use Fedora Extras style BuildRoot tag.
+- Use {?dist} tag in Release
+
 * Tue Jul 25 2006 Chris Lumens <clumens@redhat.com> 0.3.27-1
 - Remove gigantic keyboard comment.
 - Don't write out an empty modules section.
