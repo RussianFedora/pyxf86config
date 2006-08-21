@@ -2,8 +2,8 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.27
-Release: 2%{?dist}
+Version: 0.3.28
+Release: 1%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.28-1.fc6
+- Decode degenerate ranges correctly. (#132679)
+
 * Wed Jul 26 2006 Mike A. Harris <mharris@redhat.com> 0.3.27-2.fc6
 - Remove dependency on xorg-x11-server-sdk, and replace it with correct dep
   on "libxf86config-devel >= 1.1.1-7", and rebuild in order to pick up
