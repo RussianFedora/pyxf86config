@@ -2,7 +2,7 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.28
+Version: 0.3.29
 Release: 1%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Aug 23 2006 Adam Jackson <ajackson@redhat.com> 0.3.29-1.fc6
+- Default depth of 24.
+
 * Mon Aug 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.28-1.fc6
 - Decode degenerate ranges correctly. (#132679)
 
