@@ -2,7 +2,7 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.29
+Version: 0.3.30
 Release: 1%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.gz
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Aug 25 2006 Adam Jackson <ajackson@redhat.com> 0.3.30-1.fc6
+- Remove a stray reference to XFree86.
+
 * Wed Aug 23 2006 Adam Jackson <ajackson@redhat.com> 0.3.29-1.fc6
 - Default depth of 24.
 
