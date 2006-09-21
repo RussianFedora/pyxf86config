@@ -2,10 +2,10 @@
 
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.30
+Version: 0.3.31
 Release: 1%{?dist}
 URL: http://www.redhat.com/
-Source0: %{name}-%{version}.tar.gz
+Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -45,6 +45,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Sep 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.31-1.fc6
+- Add a .size() method to genlists.
+- Use bzip2 archive
+
 * Fri Aug 25 2006 Adam Jackson <ajackson@redhat.com> 0.3.30-1.fc6
 - Remove a stray reference to XFree86.
 
