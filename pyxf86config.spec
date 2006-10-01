@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.31
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Oct 01 2006 Jesse Keating <jkeating@redhat.com> - 0.3.31-2
+- rebuilt for unwind info generation, broken in gcc-4.1.1-21
+
 * Thu Sep 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.31-1.fc6
 - Add a .size() method to genlists.
 - Use bzip2 archive
