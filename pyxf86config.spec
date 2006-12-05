@@ -10,7 +10,6 @@ License: GPL
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: glib2
-Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
