@@ -3,7 +3,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.31
-Release: 2%{?dist}
+Release: 3%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
@@ -14,7 +14,7 @@ Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
-BuildRequires: libxf86config-devel >= 1.1.1-7
+BuildRequires: libxf86config-devel >= 1.1.1-52
 
 ExcludeArch: s390 s390x
 
@@ -45,6 +45,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Dec 5 2006 Adam Jackson <ajax@redhat.com> 0.3.31-3
+- Update libxf86config-devel BR to a sufficiently new version to not print the
+  "Comment all HorizSync and VertSync values to use DDC" message, and
+  rebuild.  (#216288)
+
 * Sun Oct 01 2006 Jesse Keating <jkeating@redhat.com> - 0.3.31-2
 - rebuilt for unwind info generation, broken in gcc-4.1.1-21
 
