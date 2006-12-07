@@ -1,9 +1,7 @@
-%define pyver %(python -c 'import sys ; print sys.version[:3]')
-
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.31
-Release: 3%{?dist}
+Release: 4%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
@@ -26,7 +24,8 @@ It is used to read and write X server configuration files.
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-%configure --x-libraries=%{_libdir} --with-python-version=%{pyver}
+pyver=$(python -c 'import sys ; print sys.version[:3]')
+%configure --x-libraries=%{_libdir} --with-python-version=$pyver
 make
 
 %install
@@ -44,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Dec  7 2006 Jeremy Katz <katzj@redhat.com> - 0.3.31-4
+- rebuild against python 2.5
+
 * Tue Dec 5 2006 Adam Jackson <ajax@redhat.com> 0.3.31-3
 - Update libxf86config-devel BR to a sufficiently new version to not print the
   "Comment all HorizSync and VertSync values to use DDC" message, and
