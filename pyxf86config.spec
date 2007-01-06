@@ -1,18 +1,20 @@
+%define pyver %(python -c 'import sys ; print sys.version[:3]')
+
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.31
-Release: 4%{?dist}
+Version: 0.3.32
+Release: 1
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
 Group: System Environment/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot: %{_tmppath}/%{name}-root
 Requires: glib2
+Requires: python-abi = %{pyver}
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
-BuildRequires: libxf86config-devel >= 1.1.1-52
-
+BuildRequires: xorg-x11-server-sdk
 ExcludeArch: s390 s390x
 
 %description
@@ -24,8 +26,7 @@ It is used to read and write X server configuration files.
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-pyver=$(python -c 'import sys ; print sys.version[:3]')
-%configure --x-libraries=%{_libdir} --with-python-version=$pyver
+%configure --x-libraries=%{_libdir} --with-python-version=%{pyver}
 make
 
 %install
@@ -43,36 +44,21 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Thu Dec  7 2006 Jeremy Katz <katzj@redhat.com> - 0.3.31-4
-- rebuild against python 2.5
+* Sat Jan  6 2007 Jeremy Katz <katzj@redhat.com> - 0.3.32-1
+- Fix inconsistent PyObject/PyMem usage (#219918, #220993)
 
-* Tue Dec 5 2006 Adam Jackson <ajax@redhat.com> 0.3.31-3
-- Update libxf86config-devel BR to a sufficiently new version to not print the
-  "Comment all HorizSync and VertSync values to use DDC" message, and
-  rebuild.  (#216288)
-
-* Sun Oct 01 2006 Jesse Keating <jkeating@redhat.com> - 0.3.31-2
-- rebuilt for unwind info generation, broken in gcc-4.1.1-21
-
-* Thu Sep 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.31-1.fc6
+* Thu Sep 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.31-1
 - Add a .size() method to genlists.
-- Use bzip2 archive
+- Use bzip2 archive.
 
-* Fri Aug 25 2006 Adam Jackson <ajackson@redhat.com> 0.3.30-1.fc6
+* Fri Aug 25 2006 Adam Jackson <ajackson@redhat.com> 0.3.30-1
 - Remove a stray reference to XFree86.
 
-* Wed Aug 23 2006 Adam Jackson <ajackson@redhat.com> 0.3.29-1.fc6
+* Wed Aug 23 2006 Adam Jackson <ajackson@redhat.com> 0.3.29-1
 - Default depth of 24.
 
-* Mon Aug 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.28-1.fc6
+* Mon Aug 21 2006 Adam Jackson <ajackson@redhat.com> 0.3.28-1
 - Decode degenerate ranges correctly. (#132679)
-
-* Wed Jul 26 2006 Mike A. Harris <mharris@redhat.com> 0.3.27-2.fc6
-- Remove dependency on xorg-x11-server-sdk, and replace it with correct dep
-  on "libxf86config-devel >= 1.1.1-7", and rebuild in order to pick up
-  necessary fixes in the static library.
-- Use Fedora Extras style BuildRoot tag.
-- Use {?dist} tag in Release
 
 * Tue Jul 25 2006 Chris Lumens <clumens@redhat.com> 0.3.27-1
 - Remove gigantic keyboard comment.
