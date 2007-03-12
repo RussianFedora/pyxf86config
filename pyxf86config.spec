@@ -1,6 +1,6 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.32
+Version: 0.3.33
 Release: 1%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.bz2
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 12 2007 Adam Jackson <ajax@redhat.com> 0.3.33-1
+- Add some more modes to the default set (#165325)
+
 * Sat Jan  6 2007 Jeremy Katz <katzj@redhat.com> - 0.3.32-1
 - Fix inconsistent PyObject/PyMem usage (#219918, #220993)
 
