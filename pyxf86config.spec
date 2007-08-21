@@ -1,7 +1,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.33
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://www.redhat.com/
 Source0: %{name}-%{version}.tar.bz2
 License: GPL
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Aug 21 2007 Adam Jackson <ajax@redhat.com> - 0.3.33-2
+- Rebuild for build id
+
 * Mon Mar 12 2007 Adam Jackson <ajax@redhat.com> 0.3.33-1
 - Add some more modes to the default set (#165325)
 
