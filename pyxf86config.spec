@@ -1,17 +1,17 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.33
-Release: 2%{?dist}
-URL: http://www.redhat.com/
-Source0: %{name}-%{version}.tar.bz2
-License: GPL
+Version: 0.3.34
+Release: 1%{?dist}
+URL: http://fedoraproject.org/wiki/pyxf86config
+Source0: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.bz2
+License: GPLv2
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: glib2
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
-BuildRequires: libxf86config-devel >= 1.1.1-52
+BuildRequires: libxf86config-devel >= 1.3.0.0-26
 
 ExcludeArch: s390 s390x
 
@@ -37,12 +37,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc README NEWS AUTHORS COPYING ChangeLog
+%doc README NEWS AUTHORS COPYING
 %{_libdir}/python?.?/site-packages/ixf86configmodule.so
 %{_libdir}/python?.?/site-packages/xf86config.py*
 
 
 %changelog
+* Wed Sep 26 2007 Adam Jackson <ajax@redhat.com> 0.3.34-1
+- pyxf86config 0.3.34
+- License is GPLv2
+- Bump libxf86config-devel buildreq to pick up symbol visibility tweak
+
 * Tue Aug 21 2007 Adam Jackson <ajax@redhat.com> - 0.3.33-2
 - Rebuild for build id
 
