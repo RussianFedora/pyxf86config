@@ -1,7 +1,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
-Version: 0.3.34
-Release: 2%{?dist}
+Version: 0.3.35
+Release: 1%{?dist}
 URL: http://fedoraproject.org/wiki/pyxf86config
 Source0: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.bz2
 License: GPLv2
@@ -43,6 +43,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Mar 11 2008 Jeremy Katz <katzj@redhat.com> - 0.3.35-1
+- Don't include keyboard in the template
+
 * Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 0.3.34-2
 - Autorebuild for GCC 4.3
 
