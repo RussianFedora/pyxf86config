@@ -1,7 +1,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.37
-Release: 3%{?dist}
+Release: 4%{?dist}
 URL: http://fedoraproject.org/wiki/pyxf86config
 Source0: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.bz2
 License: GPLv2
@@ -42,6 +42,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.3.37-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
 * Sat Feb 21 2009 Adam Jackson <ajax@redhat.com> 0.3.37-3
 - Merge review cleanups (#226349)
 
