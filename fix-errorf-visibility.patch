@@ -1,0 +1,21 @@
+diff -up pyxf86config-0.3.37/xf86config_ext.c.da pyxf86config-0.3.37/xf86config_ext.c
+--- pyxf86config-0.3.37/xf86config_ext.c.da	2009-08-07 10:57:05.000000000 +1000
++++ pyxf86config-0.3.37/xf86config_ext.c	2009-08-07 10:57:07.000000000 +1000
+@@ -213,7 +213,7 @@ xf86freeVendor (XF86ConfVendorPtr p)
+ }
+ 
+ void
+-ErrorF(const char *format, ...)
++__attribute__((visibility("default"))) ErrorF(const char *format, ...)
+ {
+   gchar *buffer;
+   va_list args;
+@@ -226,7 +226,7 @@ ErrorF(const char *format, ...)
+ }
+ 
+ void
+-VErrorF(const char *format, va_list args)
++__attribute__((visibility("default"))) VErrorF(const char *format, va_list args)
+ {
+   gchar *buffer;
+ 
