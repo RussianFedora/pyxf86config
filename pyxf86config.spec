@@ -1,7 +1,7 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.37
-Release: 6%{?dist}
+Release: 7%{?dist}
 URL: http://fedoraproject.org/wiki/pyxf86config
 Source0: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.bz2
 License: GPLv2
@@ -10,9 +10,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
-BuildRequires: libxf86config-devel >= 1.3.0.0-26
+BuildRequires: libxf86config-devel >= 1.6.99-29
 
-Patch0: fix-errorf-visibility.patch
 ExcludeArch: s390 s390x
 
 %description
@@ -21,7 +20,6 @@ It is used to read and write X server configuration files.
 
 %prep
 %setup -q
-%patch0 -p1 -b .symbol
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
@@ -44,6 +42,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Aug 07 2009 Dave Airlie <airlied@redhat.com> 0.3.37-7
+- fix X server and put this back
+
 * Fri Aug 07 2009 Dave Airlie <airlied@redhat.com> 0.3.37-6
 - fix ErrorF/VErrorF symbol visibility - hacky but should do for now
 
