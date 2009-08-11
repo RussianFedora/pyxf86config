@@ -10,7 +10,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
 BuildRequires: python-devel
-BuildRequires: libxf86config-devel >= 1.6.99-29
+BuildRequires: libxf86config-devel >= 1.6.99-31
 
 ExcludeArch: s390 s390x
 
