@@ -1,18 +1,23 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.37
-Release: 8%{?dist}
+Release: 9%{?dist}
 URL: http://fedoraproject.org/wiki/pyxf86config
 Source0: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.bz2
 License: GPLv2
 Group: System Environment/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: glib2-devel
 BuildRequires: libX11-devel
-BuildRequires: python-devel
-BuildRequires: libxf86config-devel >= 1.6.99-31
+BuildRequires: python2-devel
+BuildRequires: libxf86config-devel
 
 ExcludeArch: s390 s390x
+
+# we don't want to provide private python extension libs
+%{?filter_setup:
+%filter_provides_in %{python_sitearch}/.*\.so$ 
+%filter_setup
+}
 
 %description
 Python wrappers for the X server config file library libxf86config.
@@ -24,24 +29,22 @@ It is used to read and write X server configuration files.
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
 pyver=$(python -c 'import sys ; print sys.version[:3]')
-%configure --x-libraries=%{_libdir} --with-python-version=$pyver
-make
+%configure  --x-libraries=%{_libdir} --with-python-version=$pyver
+make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%makeinstall
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 
 %files
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 %doc README NEWS AUTHORS COPYING
-%{_libdir}/python?.?/site-packages/ixf86configmodule.so
-%{_libdir}/python?.?/site-packages/xf86config.py*
-
+%{python_sitearch}/ixf86configmodule.so
+%{python_sitearch}/xf86config.py*
 
 %changelog
+* Sat Oct 02 2010 Parag Nemade <paragn AT fedoraproject.org> - 0.3.37-9
+- Merge-review cleanup (#226349)
+
 * Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 0.3.37-8
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
