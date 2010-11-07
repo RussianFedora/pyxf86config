@@ -1,9 +1,12 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.37
-Release: 9%{?dist}
+Release: 10%{?dist}
 URL: http://fedoraproject.org/wiki/pyxf86config
 Source0: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.bz2
+Patch0: 0001-libxf86config.a-gained-dependency-on-xstrtokenize-pu.patch
+Patch1: 0002-Provide-xf86CheckBoolOption.patch
+Patch2: 0003-Initialize-configuration-file-parser-before-use.patch
 License: GPLv2
 Group: System Environment/Libraries
 BuildRequires: glib2-devel
@@ -25,6 +28,9 @@ It is used to read and write X server configuration files.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
@@ -42,6 +48,9 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 %{python_sitearch}/xf86config.py*
 
 %changelog
+* Sun Nov 07 2010 Lubomir Rintel <lkundrak@v3.sk> - 0.3.37-10
+- Unbreak it for new XOrg configuration parser
+
 * Sat Oct 02 2010 Parag Nemade <paragn AT fedoraproject.org> - 0.3.37-9
 - Merge-review cleanup (#226349)
 

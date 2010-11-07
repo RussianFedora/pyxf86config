@@ -1,0 +1,70 @@
+From 883ae1202a348e2d72559a6e8662b02760e18951 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Mon, 23 Aug 2010 09:29:41 +0200
+Subject: [PATCH 1/3] libxf86config.a gained dependency on xstrtokenize, pull it from there
+
+---
+ xf86config_ext.c |   43 +++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 43 insertions(+), 0 deletions(-)
+
+diff --git a/xf86config_ext.c b/xf86config_ext.c
+index 6241cf7..a861ddc 100644
+--- a/xf86config_ext.c
++++ b/xf86config_ext.c
+@@ -2,6 +2,7 @@
+ #include <stdlib.h>
+ #include <xf86Parser.h>
+ #include "xf86ParserExt.h"
++#include <misc.h>
+ 
+ #define xf86confmalloc malloc
+ #define xf86confrealloc realloc
+@@ -234,3 +235,45 @@ VErrorF(const char *format, va_list args)
+ 
+   g_print ("%s", buffer);
+ }
++
++/* Taken as-is from xserver's os/utils.c */
++
++/*
++ * Tokenize a string into a NULL terminated array of strings. Always returns
++ * an allocated array unless an error occurs.
++ */
++char**
++xstrtokenize(const char *str, const char *separators)
++{
++    char **list, **nlist;
++    char *tok, *tmp;
++    unsigned num = 0, n;
++
++    if (!str)
++        return NULL;
++    list = calloc(1, sizeof(*list));
++    if (!list)
++        return NULL;
++    tmp = strdup(str);
++    if (!tmp)
++        goto error;
++    for (tok = strtok(tmp, separators); tok; tok = strtok(NULL, separators)) {
++        nlist = realloc(list, (num + 2) * sizeof(*list));
++        if (!nlist)
++            goto error;
++        list = nlist;
++        list[num] = strdup(tok);
++        if (!list[num])
++            goto error;
++        list[++num] = NULL;
++    }
++    free(tmp);
++    return list;
++
++error:
++    free(tmp);
++    for (n = 0; n < num; n++)
++        free(list[n]);
++    free(list);
++    return NULL;
++}
+-- 
+1.7.3.1
+

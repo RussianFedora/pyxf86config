@@ -1,0 +1,24 @@
+From d46d60e0425711e04c68ca467e456312c3fa4315 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Sun, 7 Nov 2010 13:42:24 -0500
+Subject: [PATCH 3/3] Initialize configuration file parser before use
+
+---
+ pyxf86conf.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/pyxf86conf.c b/pyxf86conf.c
+index 5bce789..a1d75da 100644
+--- a/pyxf86conf.c
++++ b/pyxf86conf.c
+@@ -2740,6 +2740,7 @@ pyxf86readConfigFile(PyObject *self, PyObject *args)
+     {
+       read_file = strdup (read_file);
+ 
++      xf86initConfigFiles ();
+       config = xf86readConfigFile ();
+   
+       xf86closeConfigFile ();
+-- 
+1.7.3.1
+
