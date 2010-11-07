@@ -1,0 +1,32 @@
+From adf49e37e0800d326d63611a0b9e94d5dd3b7931 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Mon, 23 Aug 2010 09:29:57 +0200
+Subject: [PATCH 2/3] Provide xf86CheckBoolOption
+
+---
+ xf86config_ext.c |    9 +++++++++
+ 1 files changed, 9 insertions(+), 0 deletions(-)
+
+diff --git a/xf86config_ext.c b/xf86config_ext.c
+index a861ddc..9511aea 100644
+--- a/xf86config_ext.c
++++ b/xf86config_ext.c
+@@ -213,6 +213,15 @@ xf86freeVendor (XF86ConfVendorPtr p)
+   xf86conffree (p);
+ }
+ 
++int
++xf86CheckBoolOption(void* optlist, const char *name, int deflt)
++{
++  /* Input autoconfiguration is only done by real X server */
++  if (strcmp ("AutoServerLayout", name) != 0)
++      ErrorF ("xf86CheckBoolOption for '%s' not implemented", name);
++  return FALSE;
++}
++
+ void
+ ErrorF(const char *format, ...)
+ {
+-- 
+1.7.3.1
+
