@@ -1,9 +1,16 @@
 Summary: Python wrappers for libxf86config
 Name: pyxf86config
 Version: 0.3.37
-Release: 8%{?dist}
+Release: 8%{?dist}.1
 URL: http://fedoraproject.org/wiki/pyxf86config
 Source0: http://ajax.fedorapeople.org/%{name}/%{name}-%{version}.tar.bz2
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=624297
+# https://bugzilla.redhat.com/attachment.cgi?id=440307
+Patch0: pyxf86config-xstrtokenize.patch
+# https://bugzilla.redhat.com/attachment.cgi?id=440309
+Patch1: pyxf86config-xf86CheckBoolOption.patch
+
 License: GPLv2
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -20,6 +27,8 @@ It is used to read and write X server configuration files.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fPIC"
@@ -42,6 +51,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Oct 25 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 0.3.37-8.1
+- fix rh#624297
+
 * Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 0.3.37-8
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
